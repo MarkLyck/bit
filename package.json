@@ -2,5 +2,11 @@
   "name": "bit",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.3"
+  }
 }
