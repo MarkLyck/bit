@@ -1,12 +1,26 @@
 {
-  "name": "bit",
+  "name": "lyck-ui",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "react": "^16.13.1"
+    "@emotion/react": "^11.1.2",
+    "@emotion/styled": "^11.0.0",
+    "polished": "^4.0.5",
+    "react": "^17.0.1"
   },
   "devDependencies": {
-    "typescript": "^4.0.3"
+    "@babel/core": "^7.12.9",
+    "@storybook/addon-actions": "^6.1.10",
+    "@storybook/addon-essentials": "^6.1.10",
+    "@storybook/addon-links": "^6.1.10",
+    "@storybook/react": "^6.1.10",
+    "babel-loader": "^8.2.2",
+    "react-dom": "^17.0.1",
+    "typescript": "^4.1.2"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   }
 }

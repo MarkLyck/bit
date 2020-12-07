@@ -1,3 +1,3 @@
 import React from 'react';
-const Button = () => (React.createElement("button", null, "test"));
+const Button = ({ children }) => (React.createElement("button", null, children));
 export default Button;

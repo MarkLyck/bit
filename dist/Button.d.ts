@@ -1,3 +1,5 @@
 /// <reference types="react" />
-declare const Button: () => JSX.Element;
+declare const Button: ({ children }: {
+    children: any;
+}) => JSX.Element;
 export default Button;
