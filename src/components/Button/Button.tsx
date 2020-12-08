@@ -62,19 +62,102 @@ const FilledButton = styled.button`
     }
 `
 
+const OutlineButton = styled.button`
+    background-color: white;
+    color: ${(p: ButtonProps) => theme.colors[p.status][500]};
+    font-weight: bold;
+    padding: ${p => getPadding(p.size)};
+    font-size: ${p => getFontSize(p.size)};
+    border: 2px solid ${(p: ButtonProps) => theme.colors[p.status][500]};
+    border-radius: 4px;
+    outline: none;
+
+    &:hover {
+        cursor: pointer;
+        background-color: ${(p: ButtonProps) => transparentize(1 - 0.08, theme.colors[p.status][500])};
+    }
+
+    &:active {
+        background-color: ${(p: ButtonProps) => transparentize(1 - 0.16, theme.colors[p.status][500])};
+    }
+
+    &:focus {
+        background-color: ${(p: ButtonProps) => transparentize(1 - 0.16, theme.colors[p.status][500])};
+        box-shadow: 0 0 0 2pt rgba(143, 155, 179, 0.16);
+    }
+
+    &:disabled {
+        background-color: ${transparentize(1 - 0.16, theme.colors.basic[500])};
+        border: 2px solid ${transparentize(1 - 0.24, theme.colors.basic[500])};
+        color: ${theme.colors.basic[600]};
+        cursor: not-allowed;
+    }
+`
+
+const GhostButton = styled.button`
+    background-color: transparent;
+    color: ${(p: ButtonProps) => theme.colors[p.status][500]};
+    font-weight: bold;
+    padding: ${p => getPadding(p.size)};
+    font-size: ${p => getFontSize(p.size)};
+    border: 2px solid transparent;
+    border-radius: 4px;
+    outline: none;
+
+    &:hover {
+        cursor: pointer;
+        background-color: ${(p: ButtonProps) => transparentize(1 - 0.08, theme.colors[p.status][500])};
+    }
+
+    &:active {
+        background-color: ${(p: ButtonProps) => transparentize(1 - 0.16, theme.colors[p.status][500])};
+    }
+
+    &:focus {
+        background-color: ${(p: ButtonProps) => transparentize(1 - 0.16, theme.colors[p.status][500])};
+        box-shadow: 0 0 0 2pt rgba(143, 155, 179, 0.16);
+    }
+
+    &:disabled {
+        background-color: ${transparentize(1 - 0.16, theme.colors.basic[500])};
+        border: 2px solid ${transparentize(1 - 0.24, theme.colors.basic[500])};
+        color: ${theme.colors.basic[600]};
+        cursor: not-allowed;
+    }
+`
+
 const Button = ({
     children,
     appearance = 'filled',
     status = 'primary',
     size = 'medium',
     disabled,
+    ...props
 }: ButtonProps) => {
 
-    return (
-        <FilledButton size={size} status={status} disabled={disabled}>
-            {children}
-        </FilledButton>
-    )
+    if (appearance === 'filled') {
+        return (
+            <FilledButton size={size} status={status} disabled={disabled} {...props}>
+                {children}
+            </FilledButton>
+        )
+    }
+
+    if (appearance === 'outline') {
+        return (
+            <OutlineButton size={size} status={status} disabled={disabled} {...props}>
+                {children}
+            </OutlineButton>
+        )
+    }
+
+    if (appearance === 'ghost') {
+        return (
+            <GhostButton size={size} status={status} disabled={disabled} {...props}>
+                {children}
+            </GhostButton>
+        )
+    }
 }
 
 export default Button
